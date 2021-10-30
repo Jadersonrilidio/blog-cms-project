@@ -1,0 +1,11 @@
+{   
+    "name": "jay/cms",
+    "require": {
+        "phpmailer/phpmailer": "^6.5"
+    },
+    "autoload": {
+        "classmap": [
+            "classes"
+        ]
+    }
+}

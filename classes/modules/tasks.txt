@@ -1,0 +1,41 @@
+/ =============== TASKS =============== /
+
+1- adjust text to post page (justify), and edit special functions to withdraw html tags
+    and other features from the summernote edition;
+
+2 - insert diferences between subscriber and admin user;
+
+3 - fix the bugs assigned by #FIXME
+
+4 - insert COOKIES and SESSIONS properly;
+
+5 - create user_logs to colect user action information and logging from the site;
+
+6 - insert the OOP model for declare functions and so on;
+
+7 - add more loaders to the page, specialy tiny located ones;
+
+8 - set post views in a future (inside the post table on SQL);
+
+9 - fix pagination style and max number of pages displayed;
+
+10 - set security permissions to access admin page;
+
+11 - create functionalities for the DB object;
+
+12 - learn mora about password hashing functions;
+
+13 - insert titles for links and functional features;
+
+14 - treat all GET/POST data inserted on pages through functions;
+
+15 - create views for posts;
+
+16 - refactor the active class on navigation menus;
+
+17 - JOIN all tables in queries;
+
+18 - change all to STATEMENT queries, create proper functions for it;
+
+
+AND MORE...
