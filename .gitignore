@@ -1,3 +1,5 @@
 vendor
 composer.lock
-.tk
+trash
+old_version
+plugin-files

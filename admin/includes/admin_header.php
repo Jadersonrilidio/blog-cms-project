@@ -1,9 +1,11 @@
 <?php ob_start(); ?>
-<?php include '../includes/db.php'; ?>
-<?php include './includes/admin_functions.php'; ?>
 <?php session_start(); ?>
 
-<?php has_admin_permission(); ?>
+<!-- Load Composer's autoloader -->
+<?php require '../vendor/autoload.php'; ?>
+<?php include 'functions/admin_functions.php'; ?>
+
+<?php Permissions::redirect_not_admin('index'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,20 +22,28 @@
     <title> CMS Admin Page </title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo Config::ADMIN_REL_PATH; ?>css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="<?php echo Config::ADMIN_REL_PATH; ?>css/sb-admin.css" rel="stylesheet">
 
     <!-- MY CSS STYLES -->
-    <link href="css/my-styles.css" rel="stylesheet">
+    <link href="<?php echo Config::ADMIN_REL_PATH; ?>css/my-styles.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo Config::ADMIN_REL_PATH; ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Toastr pretty message boxes css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+    <link href="<?php echo Config::REL_PATH; ?>css/toastr.style.css" rel="stylesheet">
+
+    <!-- Fonts Awesome CSS
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" /> -->
 
     <!-- include summernote css -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="./css/summernote.css">
+    <link rel="stylesheet" href="<?php echo Config::ADMIN_REL_PATH; ?>css/summernote.css">
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -46,3 +56,5 @@
 </head>
 
 <body>
+
+<?php Notifications::toastr_notifications_call(); ?>

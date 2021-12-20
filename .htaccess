@@ -1,7 +1,22 @@
 RewriteEngine on
 
-RewriteRule ^(index|contact|registration|login|post|forgot_password|reset_password)$ $1.php [NC,L]
+RewriteRule ^(index|contact|registration|login|logout|post|forgot|reset|search|author|category|profile)$ $1.php [NC,L]
+
+RewriteRule ^index/(\d+)$ index.php?pg=$1 [NC,L]
 
 RewriteRule ^post/(\d+)$ post.php?post_id=$1 [NC,L]
+# RewriteRule ^post/(\d+)?lang=([^/]+)$ post.php?post_id=$1&lang=$2 [NC,L]
 
 RewriteRule ^category/(\d+)$ category.php?cat_id=$1 [NC,L]
+RewriteRule ^category/(\d+)/(\d+)$ category.php?cat_id=$1&pg=$2 [NC,L]
+
+RewriteRule ^author/(\d+)$ author.php?author_id=$1 [NC,L]
+RewriteRule ^author/(\d+)/(\d+)$ author.php?author_id=$1&pg=$2 [NC,L]
+RewriteRule ^author/(\d+)/(\d+)$ author.php?author_id=$1&pg=$2 [NC,L]
+
+RewriteRule ^forgot/([^/]+)$ forgot.php?forgot=$1 [NC,L]
+
+# https://stackoverflow.com/questions/5464481/clean-urls-for-search-query
+RewriteRule ^search/$ search.php [NC,L]
+RewriteRule ^search/([^/]+)$ search.php?pattern=$1 [NC,L]
+RewriteRule ^search/([^/]+)/(\d+)$ search.php?pattern=$1&pg=$2 [NC,L]

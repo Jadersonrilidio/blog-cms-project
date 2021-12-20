@@ -9,15 +9,11 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require 'vendor/autoload.php';
 
-//Load my Config class variables
-// include 'classes/Config.php';
-
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
 try {
-    
-    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                   //Enable verbose debug output
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable implicit TLS encryption
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Host       = Config::SMPT_HOST;                      //Set the SMTP server to send through
@@ -27,14 +23,12 @@ try {
     $mail->isSMTP();                                            //Send using SMTP
     $mail->isHTML(true);                                        //Set email format to HTML
     $mail->CharSet = 'UTF-8';
-
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 
 
-
-function send_email_test ($from, $to, $subject, $body, $from_name=NULL, $to_name=NULL, $alt_body=NULL) {
+function send_email_by_phpmailer ($from, $to, $subject, $body, $from_name=NULL, $to_name=NULL, $alt_body=NULL) {
     global $mail;
 
     $mail->setFrom($from, $from_name);

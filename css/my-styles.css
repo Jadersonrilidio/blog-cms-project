@@ -18,6 +18,10 @@
     background-position: center;
 }
 
+.pager li .active_link {
+    background: #c9c9c9 !important;
+}
+
 .my-status-msg-box {
     background-color:lightgreen;
     line-height:30px;
@@ -26,9 +30,24 @@
 
 .my-float-right {
     float:right;
-    margin-right: 40px;
 }
 
-.pager li .active_link {
-    background: #c9c9c9 !important;
+.my-text-justify {
+    text-align: justify;
+}
+
+.my-display-none {
+    display:none;
+}
+
+.my-link {
+    cursor:pointer;
+}
+
+.my-msg-status {
+    color:red;
+    font-style: italic;
+    font-size: 0.85em;
+    padding-left:10px;
+    margin-bottom: 0;
 }

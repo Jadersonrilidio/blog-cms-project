@@ -1,0 +1,18 @@
+RewriteEngine on
+
+RewriteRule ^(index|posts|categories|comments|users|profile)$ $1.php [NC,L]
+
+RewriteRule ^categories/(update)/(\d+)$ categories.php?$1=$2 [NC,L]
+RewriteRule ^categories/(delete)/(\d+)$ categories.php?$1=$2 [NC,L]
+
+RewriteRule ^comments/([^/]+)/(\d+)$ comments.php?$1=$2 [NC,L]
+RewriteRule ^comments/([^/]+)/(\d+)/([^/]+)/(\d+)$ comments.php?$1=$2&$3=$4 [NC,L]
+
+RewriteRule ^posts/(\d+)$ posts.php?author=$1 [NC,L]
+RewriteRule ^posts/([^/]+)$ posts.php?$1=true [NC,L]
+RewriteRule ^posts/([^/]+)/(\d+)$ posts.php?$1=$2 [NC,L]
+RewriteRule ^posts/(\d+)/([^/]+)/(\d+)$ posts.php?author=$1&$2=$3 [NC,L]
+
+RewriteRule ^users/(\d+)$ users.php?role=$1 [NC,L]
+RewriteRule ^users/([^/]+)/(\d+)$ users.php?$1=$2 [NC,L]
+RewriteRule ^users/(\d+)/([^/]+)/(\d+)$ users.php?role=$1&$2=$3 [NC,L]
