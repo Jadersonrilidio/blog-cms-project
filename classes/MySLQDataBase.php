@@ -9,7 +9,7 @@ class MySQLDataBaseConnection {
     private const HOST = 'localhost';
     private const USER = 'root';
     private const PSWD = '';
-    private const DBNAME = 'my_cms_project';
+    private const DBNAME = 'blog_cms';
 
     static protected function connection () {
         return mysqli_connect(Self::HOST, Self::USER, Self::PSWD, Self::DBNAME);

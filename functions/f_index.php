@@ -1,9 +1,6 @@
 
 <?php
 
-// class IndexObj {
-// }
-
 // Pager object instance
 $pager = new PagerDisplayer(1);
 

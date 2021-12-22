@@ -57,9 +57,8 @@ class FormErrorMsg {
             $user_password = InputHandler::escape($_POST['user_password']);
 
             $stmt = User::select_login_attr_by_name($user_name);
-            mysqli_stmt_bind_result($stmt, $password, $id, $name, $role_id, $email);
+            mysqli_stmt_bind_result($stmt, $password, $id, $name, $role_id, $email, $lang, $img);
             mysqli_stmt_fetch($stmt);
-
             if (!$stmt || !password_verify($user_password, $password)) $echoit = true;
         }
         if ($echoit) echo "<span class='my-msg-status'>".INVALID_USERNAME_PASSWORD."</span>";

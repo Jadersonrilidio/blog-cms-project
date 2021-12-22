@@ -11,8 +11,8 @@ abstract class Config {
     const SMTP_PASSWORD = 'c363cbc61f8eac';
 
     // Path constants
-    const REL_PATH = '/projects/cms/';
-    const ADMIN_REL_PATH = '/projects/cms/admin/';
+    const REL_PATH = '/projects/blog-cms/';
+    const ADMIN_REL_PATH = '/projects/blog-cms/admin/';
 }
 
 
