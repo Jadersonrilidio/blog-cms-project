@@ -17,12 +17,9 @@ function select_user_language ($lang) {
 
 function profile_image_source () {
     global $user_image;
-
-    if ($user_image != NULL) {
-        return Config::REL_PATH."images/{$user_image}";
-    } else {
-        return "http://placehold.it/240x240/000000/FFFFFF?text=".PROFILE_IMG_PLACEHOLD;
-    }
+    return ($user_image != NULL) 
+        ? Config::REL_PATH."images/{$user_image}"
+        : "http://placehold.it/240x240/000000/FFFFFF?text=".PROFILE_IMG_PLACEHOLD;
 }
 
 function change_password () {
@@ -57,18 +54,18 @@ function update_user () {
     if(empty($_POST['user_name']) || empty($_POST['user_email'])) return false;
     if(User::username_exists($_POST['user_name']) && $_POST['user_name'] != $_SESSION['user_name']) return false;
     if(User::email_exists($_POST['user_email']) && $_POST['user_email'] != $_SESSION['user_email']) return false;
-    
+
     $id = $_SESSION['user_id'];
     $username = InputHandler::escape($_POST['user_name']);
     $email = InputHandler::escape($_POST['user_email']);
     $language = isset($_POST['user_lang']) ? $_POST['user_lang'] : NULL;
 
-    $image = (!empty($_FILES['user_img']['name'])) ? $_FILES['user_img']['name'] : NULL;
+    $image = (!empty($_FILES['user_img']['name'])) ? ($_FILES['user_img']['name']) : NULL;
     $image_temp = (!empty($_FILES['user_img']['name'])) ? $_FILES['user_img']['tmp_name']: NULL;
 
     $stmt = User::update_user($id, $username, $email, $language, $image);
     if ($stmt) {
-        move_uploaded_file($image_temp, Config::REL_PATH."/images/{$image}");
+        move_uploaded_file($image_temp, Config::REL_PATH."images/{$image}");
         MySessionHandler::session_login($id, $username, $_SESSION['user_role_id'], $email, $language, $image);
         Notifications::set_toastr_session(Notifications::USER_UPDATED);
         Permissions::redirect('profile');

@@ -33,7 +33,7 @@ $(document).ready(function () {
 });
 
 function loadUsersAdminOnline () {
-    $.get("/projects/cms/admin/functions/admin_functions.php?onlineusers=result", function (data) {
+    $.get("/projects/blog-cms/admin/functions/admin_functions.php?onlineusers=result", function (data) {
         $(".users-admin-online").text(data);
     });
 }

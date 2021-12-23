@@ -23,11 +23,11 @@
 
                         <h1 class="text-center"> <?php echo PROFILE_TITLE; ?> </h1>
 
-                        <form role="form" action="<?php echo Config::REL_PATH."profile"; ?>" method="POST" id="login-form" autocomplete="off">
+                        <form role="form" action="<?php echo Config::REL_PATH."profile"; ?>" method="POST" id="login-form" enctype="multipart/form-data" autocomplete="off">
                             
                             <div class="form-group text-center">
-                                    <img src="<?php echo profile_image_source(); ?>" width="240">
-                                    <input class="center-block" type="file" name="user_img">
+                                <img src="<?php echo profile_image_source(); ?>" width="240">
+                                <input class="center-block" type="file" name="user_img">
                             </div>
 
                             <?php FormErrorMsg::profile_has_username(); ?>

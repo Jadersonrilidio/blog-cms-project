@@ -16,7 +16,7 @@ function changeLanguage () {
 }
 
 function loadSiteUsersOnline () {
-    $.get("/projects/cms/classes/General.php?onlineusers=result", function (data) {
+    $.get("/projects/blog-cms/classes/General.php?onlineusers=result", function (data) {
         $(".users-site-online").text(data);
     });
 }

@@ -9,7 +9,7 @@ function users_admin_online_count () {
 
         if (!$connection) {
             session_start();
-            require_once '../../vendor/autoload.php';
+            require '../../vendor/autoload.php';
         }
         
         $session = session_id();
