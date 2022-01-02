@@ -107,6 +107,16 @@ const _RPT_PASSWORD_INPUT = 'Repeat Password';
 const _LOGINPAGE_BTN = "I'm already a user! - Login Page";
 const _NAV_LANG = 'Language:';
 
+// Modal login - comment btn
+const MODAL_TITLE = 'Login';
+const MODAL_USERNAME = 'Username';
+const MODAL_PASSWORD = 'Password';
+CONST MODAL_TEXT_CONTENT = 'Please login or register account to leave a comment.';
+const MODAL_REGISTER_LINK = "Register Account";
+const MODAL_LOGIN_LINK = 'Login';
+const MODAL_BTN_LOGIN = 'Login';
+const MODAL_BTN_CANCEL = 'Cancel';
+
 //General Class -> Permissions
 const GREETING_ADMIN = "Welcome back, Admin "; 
 const GREETING_USER = "Welcome back, "; 

@@ -3,8 +3,7 @@
 <?php include 'includes/header.php'; ?>
 
 <!-- PHP page function set -->
-<?php include 'includes/modals/modal_login.php'; ?> 
-<?php include 'includes/modals/modal_registration.php'; ?> 
+<?php include 'includes/modals/modal_redirect.php'; ?> 
 <?php include 'functions/f_post.php'; ?> 
 
 <!-- PHP functions -->

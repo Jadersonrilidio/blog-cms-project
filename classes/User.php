@@ -129,6 +129,14 @@ class User extends QueryHandler {
         return $lang;
     }
 
+    static public function select_user_image($id) {
+        $query = "SELECT user_image FROM users WHERE user_id = ? ";
+        $stmt = QueryHandler::statement_handler($query, 'i', $id);
+        mysqli_stmt_bind_result($stmt, $image);
+        mysqli_stmt_fetch($stmt);
+        return $image;
+    }
+
     static public function update_user ($id, $username, $email, $language=NULL, $image=NULL) {
         $query = " UPDATE users SET user_name = ? , user_email = ? "; 
         if ($language) $query .= ", user_lang = ? ";

@@ -61,7 +61,7 @@ function post_comment_html_display ($content, $id, $datetime, $author_id, $autho
     ?>
         <div class="media">
             <a class="pull-left" href="#">
-                <img class="media-object" src="http://placehold.it/64x64/000000/FFFFFF?text=User+Image">
+                <img class="media-object" src="<?php echo comments_author_image_source($author_id); ?>" width="64">
             </a>
             
             <div class="media-body">
@@ -83,6 +83,13 @@ function post_comment_html_display ($content, $id, $datetime, $author_id, $autho
     <?php
 }
 
+function comments_author_image_source ($author_id) {
+    $author_img = User::select_user_image ($author_id);
+    return ($author_img) 
+        ? Config::REL_PATH."images/{$author_img}"
+        : "http://placehold.it/64x64/000000/FFFFFF?text=64x64";
+}
+
 // Auxiliary and extra feature functions //
 
 function set_comment_content () {
@@ -100,7 +107,7 @@ function leave_comment_button () {
     if (Permissions::is_logged()) {
         echo "<button type='submit' class='btn btn-primary' name='create_comment'>".COMMENT_BTN."</button>";
     } else {
-        echo "<a href='' class='btn btn-primary leave-comment' data-toggle='modal' data-target='#loginModal'>".COMMENT_BTN."</a>";
+        echo "<a href='' class='btn btn-primary leave-comment' data-toggle='modal' data-target='#notLoggedModal'>".COMMENT_BTN."</a>";
     }
 }
 

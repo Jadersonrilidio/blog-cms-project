@@ -107,6 +107,17 @@ CONST _RPT_PASSWORD_INPUT = 'Повторите пароль';
 CONST _LOGINPAGE_BTN = "Я уже пользователь! - Вход к Систему";
 CONST _NAV_LANG = 'Язык:';
 
+// Modal login - comment btn
+const MODAL_TITLE = 'Войти';
+const MODAL_USERNAME = 'Имя пользователя';
+const MODAL_PASSWORD = 'Пароль';
+CONST MODAL_TEXT_CONTENT = 'Пожалуйста, войдите в систему или зарегистрируйте учетную запись, чтобы оставить комментарий';
+const MODAL_REGISTER_LINK = "Зарегистрировать";
+const MODAL_LOGIN_LINK = 'Войти';
+const MODAL_BTN_LOGIN = 'Войти';
+const MODAL_BTN_CANCEL = 'Отменить';
+
+
 //General Class -> Permissions
 const GREETING_ADMIN = "Добро пожаловать, Администратор"; 
 const GREETING_USER = "Добро пожаловать, "; 

@@ -1,6 +1,5 @@
 
 <!-- includes -->
-<?php include 'functions/f_login.php'; ?>
 
 <?php Login::login_user(); ?>
 

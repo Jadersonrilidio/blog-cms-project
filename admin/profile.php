@@ -7,6 +7,10 @@
 
 <!-- Page Function Set -->
 <?php include 'functions/f_profile.php'; ?>
+<?php include '../languages/en.php'; ?>
+
+<?php update_user(); ?>
+<?php change_password(); ?>
 
     <div id="wrapper">
 
@@ -16,79 +20,83 @@
                 <div class="row">
                     <div class="col-lg-12"> 
                         
-                        <?php if (!isset($_SESSION['user_id'])) header('Location: index.php'); ?>
-                        
-                        <?php $MSG_STATUS = edit_user(); ?>
-                        <?php get_session_admin_variables(); ?>
-                        <?php $user = get_user_by_session_id(); ?>
-
                         <h1 class="page-header"> Profile <small> &ensp; Admin <?php echo_admin_username(); ?> </small> </h1>
 
                         <div class="col-xs-12">
 
-                            <form action="./index.php?page=profile&user_id=<?php echo $_SESSION['user_id']; ?>" method="POST" enctype="multipart/form-data">
+                            <form role="form" action="<?php echo Config::ADMIN_REL_PATH."profile"; ?>" method="POST" id="login-form" enctype="multipart/form-data" autocomplete="off">
+                                
+                                <div class="form-group text-center">
+                                    <img src="<?php echo profile_image_source(); ?>" width="240">
+                                    <input class="center-block" type="file" name="user_img">
+                                </div>
 
-                                <?php if (!empty($MSG_STATUS)) echo "<p class='my-status-msg-box'> <i>" . $MSG_STATUS . "</i> </p> <br>"; ?>
+                                <?php FormErrorMsg::profile_has_username(); ?>
+                                <?php FormErrorMsg::profile_username_exists(); ?>
+                                
+                                <div class="form-group">
+                                    <label for="user_name"> <?php echo _USERNAME; ?> </label> 
+                                    <input type="text" name="user_name" id="username" class="form-control" placeholder="<?php echo _USERNAME_INPUT; ?>"  autocomplete="on"
+                                        value="<?php if(isset($_SESSION['user_name'])) echo $_SESSION['user_name']; ?>">
+                                </div>
+
+                                <?php FormErrorMsg::profile_has_email(); ?>
+                                <?php FormErrorMsg::profile_email_exists(); ?>
 
                                 <div class="form-group">
-                                    <label for="user_name"> Username </label>
-                                    <input class="form-control" type="text" name="user_name" placeholder="Type username..."
-                                        value="<?php echo $user['user_name']; ?>">
+                                    <label for="user_email"> <?php echo _EMAIL; ?> </label>
+                                    <input type="email" name="user_email" id="email" class="form-control" placeholder="<?php echo _EMAIL_INPUT; ?>"  autocomplete="on"
+                                        value="<?php if(isset($_SESSION['user_email'])) echo $_SESSION['user_email']; ?>">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="user_firstname"> First name </label>
-                                    <input class="form-control" type="text" name="user_firstname" placeholder="Type first name..."
-                                        value="<?php echo $user['user_firstname']; ?>">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="user_lastname"> Last name </label>
-                                    <input class="form-control" type="text" name="user_lastname" placeholder="Type last name..."
-                                        value="<?php echo $user['user_lastname']; ?>">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="user_email"> Email </label>
-                                    <input class="form-control" type="email" name="user_email" placeholder="Type email..."
-                                        value="<?php echo $user['user_email']; ?>">
-                                </div>
-
-                                <div class="form-group"> 
-                                    <label for="user_role_id"> Role </label>
-                                    <select class="form-control" name="user_role_id">
+                                    <label for="user_lang"> <?php echo PROFILE_LANG; ?> </label>
+                                    <select class="form-control" name="user_lang">
                                         <option value=''></option>
-                                        <?php if (!empty($user['user_role_id'])) $user_role_id = $user['user_role_id']; ?>
-                                        <?php user_role_selector_menu($user_role_id); ?>
+                                        <option <?php select_user_language('en'); ?> value='en'> EN </option>
+                                        <option <?php select_user_language('es'); ?> value='es'> ES </option>
+                                        <option <?php select_user_language('pt'); ?> value='pt'> PT </option>
+                                        <option <?php select_user_language('ru'); ?> value='ru'> RU </option>
                                     </select>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="user_image"> Image </label>
-                                    <img src="../images/<?php echo $user['user_image']; ?>" width="100">
-                                    <input type="file" name="user_image">
-                                </div>
+                                <div class="">
+                                    <h5 style="cursor:pointer" href="javascript:;" data-toggle="collapse" data-target="#passwords">
+                                        <strong> <?php echo PROFILE_CHANGE_PSWD; ?> <i class="fa fa-fw fa-caret-down"></i> </strong>
+                                            <?php FormErrorMsg::profile_has_current_password(); ?>
+                                            <?php FormErrorMsg::profile_wrong_current_password(); ?>
+                                            <?php FormErrorMsg::profile_has_new_password(); ?>
+                                            <?php FormErrorMsg::profile_has_rpt_password(); ?>
+                                            <?php FormErrorMsg::profile_passwords_not_match(); ?>
+                                    </h5>
 
-                                <!-- <div class="well"> FIXME - create a separate box to change the password 
-                                    <label for="user_new_password"> Create New Password </label>
-                                    <input class="form-control" type="password" name="user_new_password" placeholder="Insert new password here... ">
-                                    <br>
-                                    <input class="form-control" type="password" name="user_prev_password" placeholder="Insert correct previous password...">
-                                    <br>
-                                    <input class="btn btn-primary" type="submit" name="password_edit" value="Change password"> 
-                                </div> -->
+                                    <div id="passwords" class="collapse well">
 
-                                <br>
+                                        <div class="form-group">
+                                            <label for="old_password"> <?php echo PROFILE_CURRENT_PSWD; ?> </label>
+                                            <input type="password" name="old_password" class="form-control" placeholder="current password">
+                                        </div>
 
-                                <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="new_password"> <?php echo PROFILE_NEW_PSWD; ?> </label>
+                                            <input type="password" name="new_password" class="form-control" placeholder="new password">
+                                        </div>
 
-                                    <div class="input-group">
-                                        <input class="btn btn-primary" type="submit" name="user_edit" value="Update user"> 
-                                        <!-- <input class="btn btn-primary" type="submit" name="password_edit" value="Change Password">  -->
+                                        <div class="form-group">
+                                            <label for="rpt_password"> <?php echo PROFILE_RPT_PSWD; ?> </label>
+                                            <input type="password" name="rpt_password" class="form-control" placeholder="repeat password">
+                                        </div>
+
+                                        <input type="submit" name="change_password" class="btn btn-custom btn-lg btn-block" value="<?php echo CHANGE_PASSWORD_BTN; ?>">
+                                        
                                     </div>
                                 </div>
 
+                                <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="<?php echo PROFILE_SAVE_CHANGES; ?>">
+
                             </form>
+
+                            <!-- PROFILE COPY END  -->
 
                         </div>
 

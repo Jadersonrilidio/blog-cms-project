@@ -18,8 +18,8 @@ function forgot_password_mail () {
     $to = $email;
     $subject = 'Reset password';
     $body = "<p> Please click on the link below to reset your password: </p> <br>
-        <a href='http://localhost/projects/cms/reset?email={$email}&token={$token}'> 
-        http://localhost/projects/cms/reset?email={$email}&token={$token} </a> ";
+        <a href='http://localhost".Config::REL_PATH."reset?email={$email}&token={$token}'> 
+        http://localhost".Config::REL_PATH."reset?email={$email}&token={$token} </a> ";
 
     $result = send_email_by_phpmailer($from, $to, $subject, $body,) ? true : false;
 

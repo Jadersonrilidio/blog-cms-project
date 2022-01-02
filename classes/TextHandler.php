@@ -22,7 +22,7 @@ class TextHandler {
             echo "<p style='text-align:justify'>{$content_main}";
             echo "<span id='comment-dots-{$id}'> ... </span>";
             echo "<span class='my-display-none' id='comment-more-{$id}'>{$content_rest}</span>";
-            echo "&ensp; <a class='my-link' onclick='commentReadMore({$id})' id='comment-btn-{$id}'>".COMMENT_READ_MORE."</a>";
+            echo "&ensp; <a class='my-link' onclick='commentReadMore({$id},{$_SESSION['lang']})' id='comment-btn-{$id}'>".COMMENT_READ_MORE."</a>";
             echo "</p>";
         } else {
             echo "<p>{$content}</p>";
