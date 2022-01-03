@@ -1,6 +1,5 @@
 <?php
 
-
 class MySessionHandler {
 
     static public function login_registered_user ($user) {

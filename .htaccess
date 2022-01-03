@@ -16,7 +16,6 @@ RewriteRule ^author/(\d+)/(\d+)$ author.php?author_id=$1&pg=$2 [NC,L]
 
 RewriteRule ^forgot/([^/]+)$ forgot.php?forgot=$1 [NC,L]
 
-# https://stackoverflow.com/questions/5464481/clean-urls-for-search-query
 RewriteRule ^search/$ search.php [NC,L]
 RewriteRule ^search/([^/]+)$ search.php?pattern=$1 [NC,L]
 RewriteRule ^search/([^/]+)/(\d+)$ search.php?pattern=$1&pg=$2 [NC,L]

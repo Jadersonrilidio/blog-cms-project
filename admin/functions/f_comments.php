@@ -5,7 +5,6 @@ $post_id = isset($_GET['post']) ? InputHandler::escape($_GET['post']) : NULL;
 $author_id = isset($_GET['author']) ? InputHandler::escape($_GET['author']) : NULL;
 $comment_id = set_comment_id();
 
-
 function set_comment_id () {
     $id = NULL;
     if (isset($_GET['delete'])) $id = InputHandler::escape($_GET['delete']);
@@ -141,30 +140,5 @@ function comments_html_table_row ($comment_id, $comment_content, $comment_dateti
          echo "<td> <a class='delete-comment' data-toggle='modal' data-target='#myModal' href='' cid='{$comment_id}'> Delete </a> </td>";
      }
 }
-
-// DEPRECATED - all related functions where encapsulated into the function 'comment action';
-// function delete_comment () {
-//     global $comment_id, $post_id;
-//     if (isset($_GET['delete'])) {
-//         Comment::delete($comment_id);
-//         Permissions::redirect($post_id ? "admin/comments/{$post_id}" : 'admin/comments');
-//     };
-// }
-
-// function approve_comment () {
-//     global $comment_id, $post_id;
-//     if (isset($_GET['approve'])) {
-//         Comment::approve($comment_id);
-//         Permissions::redirect($post_id ? "admin/comments/{$post_id}" : 'admin/comments');
-//     }
-// }
-
-// function unapprove_comment () { 
-//     global $comment_id, $post_id;
-//     if (isset($_GET['unapprove'])) {
-//         Comment::unapprove($comment_id);
-//         Permissions::redirect($post_id ? "admin/comments/{$post_id}" : 'admin/comments');
-//     }
-// }
 
 ?>

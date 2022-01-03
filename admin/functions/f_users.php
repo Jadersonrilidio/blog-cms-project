@@ -3,8 +3,6 @@
 // Page Variables
 $page_role = (isset($_GET['role'])) ? InputHandler::escape($_GET['role']) : NULL;
 
-
-
 function echo_form_action_link () {
     global $page_role;
     if ($page_role) {

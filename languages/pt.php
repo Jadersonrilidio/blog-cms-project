@@ -151,12 +151,4 @@ const CHECK_CORRECTION = ' - Confira se digitou corretamente';
 const NO_NEW_PASSWORD = '* Insira nova senha';
 const INVALID_PASSWORD = '* Senha inválida';
 
-// // all admin exclusive constants set (en):
-// const NO_TITLE = '* Insert title';
-// const NO_AUTHOR = '* Must Choose author';
-// const NO_CATEGORY = '* Must choose category';
-// const NO_STATUS = '* Must choose status';
-// const NO_IMAGE = '* Must upload image';
-// const NO_CONTENT = '* Insert content';
-
 ?>

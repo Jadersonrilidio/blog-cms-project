@@ -1,7 +1,6 @@
 <?php catch_post_id_array(); ?>
 <?php delete_post(); ?>
 
-
 <form action="<?php echo post_view_all_form_action_link(); ?>" method="POST">
 
     <div id="bulkOptionsContainer" class="col-xs-4">

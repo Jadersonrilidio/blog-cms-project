@@ -1,8 +1,6 @@
 
 <?php
 
-// functions set //
-
 function reset_password () {
     if (!isset($_POST['reset_password']) || !isset($_GET['email']) || !isset($_GET['token'])) return false;
     if (empty($_POST['user_password']) || empty($_POST['repeat_password'])) return false;

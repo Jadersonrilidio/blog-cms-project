@@ -1,10 +1,6 @@
 
 <?php
 
-
-
-
-
 class Post extends QueryHandler {
     protected const ID = 'post_id';
     protected const CATEGORY_ID = 'post_category_id';
@@ -15,10 +11,8 @@ class Post extends QueryHandler {
     protected const CONTENT = 'post_content';
     protected const TAGS = 'post_tags';
     protected const STATUS_ID = 'post_status_id';
-    // protected const POST_VIEWS = 'post_views';
     static protected $attr_name_string = Self::ID.','.Self::CATEGORY_ID.','.Self::TITLE.','.Self::AUTHOR.','.Self::DATE_TIME.','.Self::IMAGE.','.Self::CONTENT.','.Self::TAGS.','.Self::STATUS_ID;
     static protected $attr_name_array = [Self::ID, Self::CATEGORY_ID, Self::TITLE, Self::AUTHOR, Self::DATE_TIME, Self::IMAGE, Self::CONTENT, Self::TAGS, Self::STATUS_ID];
-    // private $id, $cat_id, $title, $author, $datetime, $image, $content, $tags, $status_id, $views;
 
     static public function select_published_to_display ($start, $limit) {
         $query = " SELECT 
@@ -167,7 +161,7 @@ class Post extends QueryHandler {
         return $stmt;
     }
 
-    static public function select_posts_to_display_on_table ($author=NULL) { //OPTIMIZE - how to merge comment count query to this
+    static public function select_posts_to_display_on_table ($author=NULL) {
         $stmt = NULL;
 
         $query = "SELECT P.post_id, P.post_title, P.post_date_time, P.post_image, P.post_content, P.post_tags, 
@@ -235,7 +229,7 @@ class Post extends QueryHandler {
         return $stmt;
     }
 
-    static public function post_comment_count ($post_id) { //FIX - move to Comments class after finished
+    static public function post_comment_count ($post_id) {
         $query = " SELECT COUNT(comment_post_id) FROM comments WHERE comment_post_id = ? ";
         $stmt = QueryHandler::statement_handler($query, 'i', $post_id);
         mysqli_stmt_bind_result($stmt, $comment_count);

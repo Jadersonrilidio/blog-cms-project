@@ -1,6 +1,5 @@
 <?php
 
-
 class Login {
 
     static public function login_user () {

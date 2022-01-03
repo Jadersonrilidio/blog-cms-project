@@ -1,6 +1,5 @@
 <?php
 
-
 class LanguageHandler {
 
     private $language;

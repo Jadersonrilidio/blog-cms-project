@@ -20,7 +20,6 @@
             <h1 class='page-header'> <?php echo PAGE_HEADER; ?> </h1>
             
             <!-- Blog Posts -->
-            <?php #isset($_GET['pg']) ? display_all_posts($_GET['pg']) : display_all_posts(); ?>
             <?php display_published_posts(); ?>
 
             <!-- Pager -->

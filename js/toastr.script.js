@@ -1,36 +1,6 @@
 toastr.options.positionClass = "toast-top-right";
 toastr.options.showMethod = "show";
 toastr.options.hideMethod = "hide";
-
-// //main page constants
-// const LOGGED_IN = 'logged in!';
-// const LOGGED_OUT = 'logged out!';
-// const REGISTERED = 'user successfully registered!';
-// const MAIL_SENT = 'email sent!';
-// const PASSWORD_RESET = 'password reset!';
-// const COMMENT_SENT = 'comment sent!';
-
-// //admin page constants
-// const POST_CREATED = 'post successfully created!';
-// const POST_DELETED = 'post deleted!';
-// const POST_UPDATED = 'post successfully updated!';
-// const POST_SELECTION_CLONED = 'all selected posts cloned'; 
-// const POST_SELECTION_PUBLISHED = 'all selected posts published!';
-// const POST_SELECTION_TO_DRAFT = 'all selected posts set to draft';
-// const POST_SELECTION_DELETED = 'all selected posts deleted!';
-// const CAT_CREATED = 'category successfully created!'; 
-// const CAT_UPDATED = 'category successfully updated!'; 
-// const CAT_DELETED = 'category deleted'; 
-// const COMMENT_DELETED = 'comment deleted'; 
-// const COMMENT_APPROVED = 'comment approved'; 
-// const COMMENT_UNAPPROVED = 'comment unapproved'; 
-// const COMMENT_SELECTION_DELETED = 'all selected comments deleted'; 
-// const COMMENT_SELECTION_APPROVED = 'all selected comments approved'; 
-// const COMMENT_SELECTION_UNAPPROVED = 'all selected comments unapproved'; 
-// const USER_ROLE_ADMIN = 'user role set to admin'; 
-// const USER_ROLE_SUBSCRIBER = 'user role set to subscriber'; 
-// const USER_SELECTION_ROLE_ADMIN = 'all selected users role set to admin'; 
-// const USER_SELECTION_ROLE_SUBSCRIBER = 'all selected users role set to subscriber'; 
  
 const en = {
 

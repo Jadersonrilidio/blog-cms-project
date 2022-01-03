@@ -1,10 +1,6 @@
 
 <?php
 
-
-
-
-
 class Category extends QueryHandler {
 
     static public function select_all ($case='statement') { 

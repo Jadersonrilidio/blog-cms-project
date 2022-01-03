@@ -1,10 +1,6 @@
 
 <?php
 
-
-
-
-
 class User extends QueryHandler {
 
     static public function create_subscriber ($name, $password, $email) {

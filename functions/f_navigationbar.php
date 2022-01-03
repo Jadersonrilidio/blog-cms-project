@@ -1,5 +1,4 @@
 
-
 <?php
 
 $cat_id = (isset($_GET['cat_id'])) ? InputHandler::escape($_GET['cat_id']) : NULL;
@@ -50,8 +49,6 @@ function display_user_menus () {
         <?php
     } 
 }
-
-
 
 function has_profile_image () {
     $user_image = isset($_SESSION['user_img']) ? $_SESSION['user_img'] : NULL;

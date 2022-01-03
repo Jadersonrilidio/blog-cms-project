@@ -150,13 +150,4 @@ const CHECK_CORRECTION = ' - проверьте, правильно ли вы е
 const NO_NEW_PASSWORD = '* Вводить новый пароль';
 const INVALID_PASSWORD = '* Неверный пароль';
 
-// all admin exclusive constants set (en):
-// const NO_TITLE = '* Insert title';
-// const NO_AUTHOR = '* Must Choose author';
-// const NO_CATEGORY = '* Must choose category';
-// const NO_STATUS = '* Must choose status';
-// const NO_IMAGE = '* Must upload image';
-// const NO_CONTENT = '* Insert content';
-
-
 ?>

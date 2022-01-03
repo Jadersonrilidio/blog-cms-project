@@ -1,6 +1,5 @@
 <?php
 
-
 class TextHandler {
 
     static public function text_shrink ($content, $num_chars) {

@@ -1,47 +1,9 @@
 <?php
 
-// // Advantage - With only one query it is possible to pull all infos needed to handle the page features;
-// class SeachPage extends mysqli_stmt {
-//     public $status_msg = null;
-//     public $search_pattern, $pg, $limit;
-//     public $total_posts, $total_pages;
-
-
-
-//     public function __construct($search_pattern=NULL, $pg=1, $limit=5) {
-//         $this->search_pattern = $search_pattern;
-//         $this->pg = $pg;
-//         $this->limit = $limit;
-
-//         $start = ($pg * $limit) - $limit;
-
-//         $this->stmt = Post::select_published_match_to_display($search_pattern, $start, $limit);
-//         $this->total_posts = mysqli_stmt_num_rows($this->stmt);
-
-//         if ($this->total_posts === 0) {
-//             $this->status_msg = "<h2 class='text-center'> No results found for '{$search_pattern}' </h2>";
-//         }
-//     }
-
-
-//     public function TEMP_CODES () {
-//         mysqli_stmt_bind_result($stmt, $id, $title, $author_name, $date_time, $img, $content, $user_id);
-
-//         while (mysqli_stmt_fetch($stmt)) {
-//             display_post_html_preview($id, $title, $author_name, $date_time, $img, $content, $user_id);
-//         }
-//     }
-
-//     public function create_search_pattern () {
-//         Self::$search_pattern = (isset($_GET['pattern'])) ? InputHandler::escape($_GET['pattern']) : NULL;
-//     }
-// }
-
 $search_pattern = (isset($_GET['pattern'])) ? InputHandler::escape($_GET['pattern']) : NULL;
 
 // Page object instances
 $pager = new PagerDisplayer(2, $search_pattern);
-
 
 
 function post_search_results ($pg = 1, $limit = 5) {

@@ -1,7 +1,6 @@
 
 <?php 
 
-
 class FormErrorMsg {
 
     static public function register_has_username () {

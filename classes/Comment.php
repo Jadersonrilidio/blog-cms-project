@@ -1,7 +1,6 @@
 
 <?php
 
-
 class Comment extends QueryHandler {
 
     public static function create ($post_id, $author, $content) {
@@ -123,9 +122,5 @@ class Comment extends QueryHandler {
         return mysqli_stmt_num_rows($stmt);
     }
 }
-
-
-
-
 
 ?>

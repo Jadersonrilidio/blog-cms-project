@@ -1,7 +1,6 @@
 
 <?php
 
-
 abstract class Config {
     
     // Phpmailer constants

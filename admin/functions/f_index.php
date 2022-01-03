@@ -35,10 +35,4 @@ function dashboard_chart_script () {
     <?php
 }
 
-
-
-
-
-
-
 ?>

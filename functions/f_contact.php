@@ -32,15 +32,6 @@ function send_email () {
     
     $result = mail($to, $subject, $message, $from);
 
-    // AFTER UPDATE MAIL FUNCTION, USE THIS CODE FOR NOTIFICATIONS
-    // if ($result) {
-    //     ToastrBox::set_toastr_session(ToastrBox::MAIL_SENT);
-    //     Permissions::redirect('contact');
-    //     return true;
-    // } else {
-    //     return false;
-    // }
-
     Notifications::set_toastr_session(Notifications::MAIL_SENT);
     Permissions::redirect('contact');
     return $result ? true : false;

@@ -1,7 +1,4 @@
 
-<!-- Button to Open the Modal -->
-<!-- <a data-toggle="modal" data-target="#myModal" href="#"> Delete </a> -->
-
 <!-- Modal -->
 <div class="modal" id="myModal">
     <div class="modal-dialog">

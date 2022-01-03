@@ -4,9 +4,7 @@
 $post_id = set_post_id();
 $author = isset($_GET['author']) ? InputHandler::escape($_GET['author']) : NULL;
 
-
 //TODO - Post Page Functions: 
-
 
 function set_post_id () {
     $id = NULL;
@@ -37,9 +35,7 @@ function posts_page_includes () {
     }
 }
 
-
 //TODO - Post View All Functions 
-
 
 function post_view_all_form_action_link () {
     global $author;
@@ -68,7 +64,6 @@ function post_action_switch ($option, $post_id) {
         case 'delete': Post::delete($post_id); break;
     }
 }
-
 
 function toastr_correct_option ($option) {
     switch ($option) {
@@ -132,9 +127,7 @@ function delete_post () {
     }
 }
 
-
 //TODO - Post Add Functions 
-
 
 function echo_post_title () {
     if (!empty($_POST['post_title'])) echo $_POST['post_title'];
@@ -235,9 +228,7 @@ function get_correct_status ($status_id=NULL) {
     return $status;
 }
 
-
 //TODO - Post Edit Functions
-
 
 function echo_post_edit_form_action () {
     global $post_id;

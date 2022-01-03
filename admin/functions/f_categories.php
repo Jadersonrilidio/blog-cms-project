@@ -4,7 +4,6 @@
 $update_id = (isset($_GET['update'])) ? InputHandler::escape($_GET['update']) : NULL;
 $delete_id = (isset($_GET['delete'])) ? InputHandler::escape($_GET['delete']) : NULL;
 
-
 function add_category () {
     if (!isset($_POST['add']) || !Permissions::is_admin() || empty($_POST['cat_title'])) return false;
 
@@ -19,7 +18,6 @@ function add_category () {
     }
 }
 
-
 function delete_category () {
     global $delete_id;
     if (!isset($_GET['delete']) || !Permissions::is_admin() || !$delete_id) return false;
@@ -33,7 +31,6 @@ function delete_category () {
         return false;
     }
 }
-
 
 function update_category () {
     if (!isset($_POST['update']) || !Permissions::is_admin() || empty($_POST['cat_title'])) return false;
@@ -50,7 +47,6 @@ function update_category () {
     }
 }
 
-
 function display_category_to_update () {
     global $update_id;
     if (!$update_id) return false;
@@ -59,7 +55,6 @@ function display_category_to_update () {
     mysqli_stmt_fetch($stmt);
     category_html_update_form($id, $title);
 }
-
 
 function category_html_update_form ($id, $title) {
     ?>
@@ -76,7 +71,6 @@ function category_html_update_form ($id, $title) {
     <?php
 }
 
-
 function display_categories_on_table () {
     $stmt = Category::select_to_display_on_table();
     mysqli_stmt_bind_result($stmt, $id, $title);
@@ -85,7 +79,6 @@ function display_categories_on_table () {
         category_html_table_row($id, $title);
     }
 }
-
 
 function category_html_table_row ($id, $title) {
     echo "<tr>";

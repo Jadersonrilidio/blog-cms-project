@@ -25,7 +25,6 @@ setInterval(function () {
 }, 500);
 
 
-//TODO my function:
 
 const en = {
     COMMENT_READ_MORE: 'Read more',
@@ -63,14 +62,3 @@ function commentReadMore (id, lang) {
         moreText.style.display = "inline";
     }
 }
-
-//TODO my Modals:
-
-// $(document).ready(function() {
-//     $(".leave-comment").on('click', function() {
-
-//         let url = `/projects/cms/post/${post_id}`;
-
-//         $(".modal-leave-comment").attr("href", url);
-//     });
-// });
