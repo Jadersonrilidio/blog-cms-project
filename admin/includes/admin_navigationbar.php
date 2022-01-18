@@ -17,11 +17,13 @@
         <a class="navbar-brand">CMS Admin System</a> 
     </div>
 
-
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-    
-        <li> <a> Users online: <span class="users-admin-online"> </span> </a> </li>
+        
+        <?php RedLink::github_admin_link(); ?>
+        <?php RedLink::populate_database_page_link(); ?>
+        
+        <li style="width:150px"> <a> Users online: <span class="users-site-online">  </span>  </a> </li>
         <li title="homepage"> <a href="<?php echo Config::REL_PATH."index"; ?>"> <i class="fa fa-fw fa-home"> </i> Home </a> </li>
 
         <!-- MENU PROFILE DROPDOWN -->

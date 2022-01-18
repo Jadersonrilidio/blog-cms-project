@@ -1,5 +1,3 @@
-
-<!-- Header Settings -->
 <?php include 'includes/header.php'; ?>
 
 <!-- PHP page function set -->

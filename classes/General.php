@@ -1,4 +1,3 @@
-
 <?php
 
 users_site_online_count();
@@ -11,7 +10,7 @@ function users_site_online_count () {
         
         $session = session_id();
         $time = time();
-        $timeout_seconds = 30;
+        $timeout_seconds = 60;
         $timeout = $time - $timeout_seconds;
 
         $query = "SELECT * FROM users_online WHERE users_online_session = '$session'";
@@ -21,7 +20,7 @@ function users_site_online_count () {
             $query = "INSERT INTO users_online(users_online_session,users_online_time) VALUES('$session','$time') ";
             QueryHandler::query_handler($query, 'result');
         } else {
-            $query = "UPDATE users_online SET  users_online_time = '$time' WHERE users_online_session = '$session' ";
+            $query = "UPDATE users_online SET users_online_time = '$time' WHERE users_online_session = '$session' ";
             QueryHandler::query_handler($query, 'result');
         }
         
@@ -31,6 +30,5 @@ function users_site_online_count () {
         echo $num_rows;
     }
 }
-
 
 ?>

@@ -1,9 +1,9 @@
-
 <?php
 
 // Pager object instance
 $pager = new PagerDisplayer(1);
 
+?> <!-- F_INDEX IN PROGRESS --> <?PHP
 
 function display_published_posts ($limit = 5) {
     $pg = (isset($_GET['pg'])) ? InputHandler::escape($_GET['pg']) : 1;
@@ -27,8 +27,7 @@ function display_post_html_preview ($id, $title, $author_name, $date_time, $img,
 
     <p>
         <span class='glyphicon glyphicon-time'> </span>
-        <?php echo PAGE_POST_POSTED_ON; ?> <?php echo $date_time; ?>, &emsp;
-        <small style="color:gray"> <?php echo PAGE_POST_LAST_UPDATE; ?> 1111-11-11 11:11:11 </small>
+        <?php echo PAGE_POST_POSTED_ON; ?> <?php echo DateTimeFormater::display_post_datetime($date_time); ?>
     </p> <hr>
 
     <a href='<?php echo Config::REL_PATH."post/{$id}"; ?>'>

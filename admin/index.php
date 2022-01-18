@@ -1,5 +1,3 @@
-
-<!-- Header -->
 <?php include 'includes/admin_header.php'; ?>
 
 <!-- Navigation -->
@@ -126,9 +124,9 @@
                         <div id="columnchart_material" style="width: 1000px; height: 300px;"></div>
                         <!-- chart js script end-->
 
+                        <br>
                         <ol class="breadcrumb">
                             <li> <i class="fa fa-dashboard"> </i>  <a href="index"> Dashboard </a> </li>   
-                            <li style="color:red" class="active"> <i class="fa fa-file"> </i> Blank Page </li>
                         </ol>
 
                     </div>

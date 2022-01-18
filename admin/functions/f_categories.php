@@ -20,6 +20,9 @@ function add_category () {
 
 function delete_category () {
     global $delete_id;
+    
+    if ($delete_id == 1) return false; /* restriction: cannot delete neither alter base category */
+    
     if (!isset($_GET['delete']) || !Permissions::is_admin() || !$delete_id) return false;
 
     $stmt = Category::delete($delete_id);
@@ -33,6 +36,10 @@ function delete_category () {
 }
 
 function update_category () {
+    global $update_id;
+    
+    if ($update_id == 1 || $_POST['cat_id'] == 1) return false; /* restriction: cannot delete neither alter base category */
+    
     if (!isset($_POST['update']) || !Permissions::is_admin() || empty($_POST['cat_title'])) return false;
 
     $title = InputHandler::escape($_POST['cat_title']);

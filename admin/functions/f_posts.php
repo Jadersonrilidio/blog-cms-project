@@ -56,6 +56,9 @@ function catch_post_id_array () {
 
 function post_action_switch ($option, $post_id) {
     if (!Permissions::is_admin()) return false;
+    
+    if ($post_id == 1) return false; /* restriction: cannot delete nor alter base post */
+    
     switch ($option) {
         case 'null': break;
         case '1': Post::publish($post_id); break;
@@ -110,12 +113,17 @@ function posts_html_table_row ($post_id, $post_title, $post_datetime, $post_imag
     echo ($author)
         ? "<td style='vertical-align:middle;'> <a class='delete-post' data-toggle='modal' data-target='#myModal' href='' pid='{$post_id}' uid='{$author}'> Delete </a> </td>"       
         : "<td style='vertical-align:middle;'> <a class='delete-post' data-toggle='modal' data-target='#myModal' href='' pid='{$post_id}'> Delete </a> </td>";
-    echo "<td style='vertical-align:middle;'> <a href='".Config::ADMIN_REL_PATH."posts/edit/{$post_id}'> Edit </a> </td>"; 
+    echo ($post_id == 1)
+        ? "<td style='vertical-align:middle;'> <a href='#'> Edit </a> </td>" /* restriction: cannot delete nor alter base post */
+        : "<td style='vertical-align:middle;'> <a href='".Config::ADMIN_REL_PATH."posts/edit/{$post_id}'> Edit </a> </td>"; 
     echo "</tr>";
 }
 
 function delete_post () {
     global $post_id, $author;
+    
+     if ($post_id == 1) return false; /* restriction: cannot delete nor alter base post */
+    
     if (!isset($_GET['delete']) || !Permissions::is_admin()) return false;
     $stmt = Post::delete($post_id);
     if ($stmt) {
@@ -237,6 +245,8 @@ function echo_post_edit_form_action () {
 
 function update_post () {
     if (!before_update_validate()) return false;
+    
+    if ($_POST['post_id'] == 1) return false; /* restriction: cannot delete nor alter base post */
     
     $id = InputHandler::escape($_POST['post_id']);
     $title = InputHandler::escape($_POST['post_title']);

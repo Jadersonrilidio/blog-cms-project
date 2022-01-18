@@ -3,6 +3,9 @@
 //header <html lang="en">
 const HEAD_TITLE = 'CMS Project'; 
 
+//PHPMailer email ready messages
+const AUTOMATIC_MAIL_HEADER = 'Your email was successfully sent! You will get your response as soon as possible.';
+
 //navigation bar
 const NAV_HOME = 'Home'; 
 const NAV_CONTACT = 'Contact'; 

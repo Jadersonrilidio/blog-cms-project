@@ -35,7 +35,7 @@
                 <li class="nav nav-item">
                     <form class="form-inline" style="margin-top:8px" action="<?php echo Config::REL_PATH."search"; ?>" method="GET" onsubmit="return false;">
                         <div class="input-group">
-                            <input type="text" class="form-control" style="width:400px;height:36px" name="pattern" placeholder="<?php echo SIDEBAR_SEARCH_PLACEHOLDER; ?>">
+                            <input type="text" class="form-control" style="width:250px;height:36px" name="pattern" placeholder="<?php echo SIDEBAR_SEARCH_PLACEHOLDER; ?>">
                             <span class="input-group-btn" >
                                 <button class="btn btn-default" style="width:50px;height:36px" type="submit" onclick="window.location.href=this.form.action + '/' + this.form.pattern.value;">
                                     <span class="glyphicon glyphicon-search"></span>
@@ -52,6 +52,9 @@
 
                 <!-- greeting text -->
                 <?php navbar_greeting_logged_user(); ?>
+                
+                <!-- Populate Database special button -->
+                <?php RedLink::populate_database_page_link(); ?>
                 
                 <!-- Contact Menu -->
                 <li class='nav nav-item'> <a class='nav nav-link' href='<?php echo Config::REL_PATH."contact"; ?>'> <?php echo NAV_CONTACT; ?> </a> </li>

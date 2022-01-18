@@ -1,5 +1,3 @@
-
-<!-- Header -->
 <?php include 'includes/admin_header.php'; ?>
 
 <!-- Navigation -->
@@ -63,9 +61,9 @@
 
                         </div>
 
+                        <br>
                         <ol class="breadcrumb">
                             <li> <i class="fa fa-dashboard"> </i>  <a href="index"> Dashboard </a> </li>   
-                            <li class="active"> <i class="fa fa-file"> </i> Blank Page </li>
                         </ol>
 
                     </div>

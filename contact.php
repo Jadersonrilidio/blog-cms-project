@@ -1,5 +1,4 @@
-
-<!-- Header Settings -->
+<?php include 'functions/phpmailer_send.php'; ?>
 <?php include 'includes/header.php'; ?>
 
 <!-- PHP page function set -->

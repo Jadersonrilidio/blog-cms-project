@@ -11,6 +11,10 @@ class Notifications {
     const PASSWORD_RESET = 'password-reset';
     const COMMENT_SENT = 'comment-sent';
     const USER_UPDATED = 'user-updated';
+    
+    //populate_database constants
+    const TRUNCATE_SUCCESS = 'truncate-success';
+    const POPULATE_SUCCESS = 'populate-success';
 
     //admin page constants
     const POST_CREATED = 'post-created';
@@ -54,6 +58,10 @@ class Notifications {
         Self::add_html_span(Self::PASSWORD_RESET);
         Self::add_html_span(Self::COMMENT_SENT);
         Self::add_html_span(Self::USER_UPDATED);
+        
+        //populate_database span tags call
+        Self::add_html_span(Self::POPULATE_SUCCESS);
+        Self::add_html_span(Self::TRUNCATE_SUCCESS);
 
         //admin page span tags call
         Self::add_html_span(Self::POST_CREATED);

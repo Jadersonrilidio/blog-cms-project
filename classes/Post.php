@@ -124,28 +124,28 @@ class Post extends QueryHandler {
         return $stmt;
     }
 
-    static public function count_posts_by_status ($status_id) {
-        $query = "SELECT * FROM posts WHERE post_status_id = ? ";
-        $stmt = QueryHandler::statement_handler($query, 'i', $status_id);
+    static public function count_posts_by_published () {
+        $query = "SELECT * FROM posts WHERE post_status_id = 1 ";
+        $stmt = QueryHandler::statement_handler($query);
         $num_rows = mysqli_stmt_num_rows($stmt);
         return $num_rows;
     }
 
     static public function count_posts_by_category ($cat_id) { 
-        $query = "SELECT * FROM posts WHERE post_category_id = ? ";
+        $query = "SELECT * FROM posts WHERE post_category_id = ? AND post_status_id = 1 ";
         $stmt = QueryHandler::statement_handler($query, 'i', $cat_id);
         $num_rows = mysqli_stmt_num_rows($stmt);
         return $num_rows;
     }
 
     static public function count_posts_by_author ($author_id) {
-        $query = "SELECT * FROM posts WHERE post_author = ? ";
+        $query = "SELECT * FROM posts WHERE post_author = ? AND post_status_id = 1 ";
         $stmt = QueryHandler::statement_handler($query, 'i', $author_id);
         $num_rows = mysqli_stmt_num_rows($stmt);
         return $num_rows;
     }
 
-    static public function posts_count_by_search_pattern ($search_pattern) {
+    static public function count_posts_by_search_pattern ($search_pattern) {
         $search_pattern = '%'.$search_pattern.'%';
         $query = "SELECT * FROM posts WHERE post_tags LIKE ? AND post_status_id = 1 ";
         $stmt = QueryHandler::statement_handler($query, 's', $search_pattern);

@@ -19,7 +19,7 @@
 }
 
 .pager li .active_link {
-    background: #c9c9c9 !important;
+    background: #c9c9c9;
 }
 
 .my-status-msg-box {
@@ -50,4 +50,43 @@
     font-size: 0.85em;
     padding-left:10px;
     margin-bottom: 0;
+}
+
+.populate-db-box {
+    width:120px;
+    background-color: red;
+}
+
+
+.populate-db-link {
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.my-red-btn {
+    background-color:red;
+    color:white;
+    border-radius:5px;
+}
+.my-red-btn:hover {
+    background-color:rgb(228, 0, 0);
+    color:white;
+}
+.my-red-btn:active {
+    background-color:rgb(143, 0, 0);
+    color:white;
+}
+
+.my-red-navlink {
+    background-color:red;
+    color:white;
+}
+.my-red-navlink:hover {
+    background-color:rgb(228, 0, 0);
+    color:white;;
+}
+.my-red-navlink:active {
+    background-color:rgb(143, 0, 0);
+    color:white;;
 }

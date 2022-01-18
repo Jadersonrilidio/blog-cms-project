@@ -15,7 +15,6 @@
     <!-- Toastr pretty message boxes js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="<?php echo Config::REL_PATH; ?>js/toastr.script.js"></script>
-
     <script> adminNotificationsCall(<?php echo $_SESSION['lang']; ?>); </script>
 
 </body>

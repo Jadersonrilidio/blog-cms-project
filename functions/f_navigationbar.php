@@ -10,7 +10,7 @@ function dropdown_title () {
 function navbar_greeting_logged_user () {
     if (isset($_SESSION['user_name'])) {
         ?>
-        <li class='nav nav-item'> <a class='nav nav-link'> <strong> <?php Permissions::greeting_logged_user(); ?> </strong> </a> </li>;
+        <li class='nav nav-item'> <a class='nav nav-link'> <strong> <?php Permissions::greeting_logged_user(); ?> </strong> </a> </li>
         <?php
     }
 }

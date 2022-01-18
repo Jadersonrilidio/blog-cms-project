@@ -6,13 +6,21 @@
 
 
 class MySQLDataBaseConnection {
-    private const HOST = 'localhost';
-    private const USER = 'root';
-    private const PSWD = '';
-    private const DBNAME = 'blog_cms';
+    private const HOST = 'Localhost';
+    private const USER = 'jaders34_main';
+    private const PSWD = 'main-db-operator2022';
+    private const DBNAME = 'jaders34_blog_cms';
 
     static protected function connection () {
         return mysqli_connect(Self::HOST, Self::USER, Self::PSWD, Self::DBNAME);
+    }
+    
+    static public function is_connected () {
+        if (Self::connection()) {
+            return "Yes!";
+        } else {
+            return "database is not connected!";
+        }
     }
 }
 
@@ -34,7 +42,7 @@ class QueryHandler extends MySQLDataBaseConnection {
         }
     }
 
-    static public function statement_handler ($query, string $param_types=NULL, mixed ...$param_values) {
+    static public function statement_handler ($query, $param_types=NULL, ...$param_values) {
         $connection = MySQLDataBaseConnection::connection();
         $stmt = mysqli_prepare($connection, $query);
         if (isset($param_types)) mysqli_stmt_bind_param($stmt, $param_types, ...$param_values);

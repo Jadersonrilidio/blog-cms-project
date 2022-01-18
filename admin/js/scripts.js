@@ -1,3 +1,6 @@
+const REL_PATH = '/';
+const ADMIN_REL_PATH = '/admin/';
+
 
 $(document).ready(function() {
     $('#summernote').summernote({
@@ -32,14 +35,14 @@ $(document).ready(function () {
     });
 });
 
-function loadUsersAdminOnline () {
-    $.get("/projects/blog-cms/admin/functions/admin_functions.php?onlineusers=result", function (data) {
-        $(".users-admin-online").text(data);
+function loadSiteUsersOnline () {
+    $.get((REL_PATH + "classes/General.php?onlineusers=result"), function (data) {
+        $(".users-site-online").text(data);
     });
 }
 setInterval(function () {
-    loadUsersAdminOnline();
-}, 500);
+    loadSiteUsersOnline();
+}, 5000);
 
 //TODO - Modal Functions
 
@@ -48,8 +51,8 @@ $(document).ready(function() {
         let post_id = $(this).attr("pid");
         let user_id = $(this).attr("uid");
         
-        let url = `/projects/blog-cms/admin/posts/delete/${post_id}`;
-        if (user_id) url = `/projects/blog-cms/admin/posts/${user_id}/delete/${post_id}`;
+        let url = `${ADMIN_REL_PATH}/posts/delete/${post_id}`;
+        if (user_id) url = `${ADMIN_REL_PATH}posts/${user_id}/delete/${post_id}`;
 
         $(".modal-delete-post").attr("href", url);
     });
@@ -61,28 +64,18 @@ $(document).ready(function() {
         let post_id = $(this).attr("pdi") || null;
         let author_id = $(this).attr("adi") || null;
         
-        let url = `/projects/blog-cms/admin/comments/delete/${comment_id}`;
-        if (post_id) url = `/projects/blog-cms/admin/comments/post/${post_id}/delete/${comment_id}`;
-        if (author_id) url = `/projects/blog-cms/admin/comments/author/${author_id}/delete/${comment_id}`;
+        let url = `${ADMIN_REL_PATH}comments/delete/${comment_id}`;
+        if (post_id) url = `${ADMIN_REL_PATH}comments/post/${post_id}/delete/${comment_id}`;
+        if (author_id) url = `${ADMIN_REL_PATH}comments/author/${author_id}/delete/${comment_id}`;
 
         $(".modal-delete-comment").attr("href", url);
     });
 });
 
 $(document).ready(function() {
-    $(".delete-user").on('click', function() {
-        let user_id = $(this).attr("rel");
-        
-        let delete_url = `index.php?page=users&source=user_delete&user_id=${user_id}`;
-
-        $(".modal-delete-user").attr("href", delete_url);
-    });
-});
-
-$(document).ready(function() {
     $(".delete-category").on('click', function() {
         let cat_id = $(this).attr("rel");
-        let delete_url = `/projects/blog-cms/admin/categories/delete/${cat_id}`;
+        let delete_url = `${ADMIN_REL_PATH}categories/delete/${cat_id}`;
         $(".modal-delete-category").attr("href", delete_url);
     });
 });

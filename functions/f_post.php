@@ -15,7 +15,7 @@ function get_post_attr_by_id_to_display () {
     mysqli_stmt_fetch($stmt);
 
     $title = $post_title;
-    $datetime = $post_datetime;
+    $datetime = DateTimeFormater::display_post_datetime($post_datetime);
     $image = $post_image;
     $content = $post_content;
     $author_id = $user_id;
@@ -72,7 +72,7 @@ function post_comment_html_display ($content, $id, $datetime, $author_id, $autho
                         <?php echo $author_name; ?> 
                     </a>
 
-                    <small> <?php echo $datetime; ?> </small>
+                    <small> <?php echo DateTimeFormater::display_comment_datetime($datetime); ?> </small>
 
                 </h4>
 

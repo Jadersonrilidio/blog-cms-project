@@ -19,18 +19,17 @@ function set_message () {
 function send_email () {
     if (!isset($_POST['submit'])) return false;
     if (empty($_POST['email']) || empty($_POST['subject']) || empty($_POST['message'])) return false;
-
-    $to = 'jadersonrilidio@gmail.com';
     
-    $subject = InputHandler::escape($_POST['subject']);
-    $subject = wordwrap($subject, 70, "\n", true);
+    $to = $_POST['email'];
+    $subject = $_POST['subject'];
+    $message =$_POST['message'];
+    $body = <<<EOT
+            <p> <strong> Email: </strong> {$to} </p>
+            <p> <strong> Subject: </strong> {$subject} </p>
+            <p style='text-align:justify'> {$message} </p>
+        EOT;
     
-    $message = InputHandler::escape($_POST['message']);
-    
-    $email = InputHandler::escape($_POST['email']);
-    $from = "From: ".$email;
-    
-    $result = mail($to, $subject, $message, $from);
+    $result = send_email_by_phpmailer ($to, $subject, $body);
 
     Notifications::set_toastr_session(Notifications::MAIL_SENT);
     Permissions::redirect('contact');

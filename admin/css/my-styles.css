@@ -45,5 +45,32 @@
 }
 
 .my-lang:hover {
-    color:white !important;
+    color:white;
+}
+
+.my-red-btn {
+    background-color:red;
+    color:white;
+    border-radius:5px;
+}
+.my-red-btn:hover {
+    background-color:rgb(228, 0, 0);
+    color:white;
+}
+.my-red-btn:active {
+    background-color:rgb(143, 0, 0);
+    color:white;
+}
+
+.my-red-navlink {
+    background-color:red;
+    color:white;
+}
+.my-red-navlink:hover {
+    background-color:rgb(228, 0, 0);
+    color:white;;
+}
+.my-red-navlink:active {
+    background-color:rgb(143, 0, 0);
+    color:white;;
 }

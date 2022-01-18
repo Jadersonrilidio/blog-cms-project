@@ -1,5 +1,3 @@
-
-<!-- Header -->
 <?php include 'includes/admin_header.php'; ?>
 
 <!-- Navigation -->
@@ -25,9 +23,9 @@
 
                         </div>
 
+                        <br>
                         <ol class="breadcrumb">
                             <li> <i class="fa fa-dashboard"> </i>  <a href="<?php echo Config::ADMIN_REL_PATH."index"; ?>"> Dashboard </a> </li>   
-                            <li style="color:red" class="active"> <i class="fa fa-file"> </i> Blank Page </li>
                         </ol>
 
                     </div>

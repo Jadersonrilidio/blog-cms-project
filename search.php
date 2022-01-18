@@ -1,5 +1,3 @@
-
-<!-- Header Settings -->
 <?php include 'includes/header.php'; ?>
 
 <!-- PHP page function set -->
@@ -26,6 +24,7 @@
 
             <!-- Pager -->
             <?php $pager->display_pager(); ?> 
+            <?php RedLink::github_PagerDisplayer_link(); ?>
 
         </div>
 

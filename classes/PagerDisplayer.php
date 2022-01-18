@@ -1,31 +1,33 @@
 <?php
 
-
 class PagerDisplayer {
 
-    protected $case;        /* index=1, search=2, author=3, category=4 */
-    private $total_posts;
-    private $num_pgs = 9;
-    protected $limit = 5;
-    protected $pg;
-    protected $id;
+    protected $page_type;       /* Page Type: index:1, search:2, author:3, category:4 */
+    private $total_posts;       /* total published posts, according to page_type */
+    private $max_num_pg = 9;    /* Max amount of page-number-links the Pager will display (recommended to always be an odd number)(not considering Previous, Next, First and Last) */
+    protected $limit;           /* number of posts displayed per page */
+    protected $pg;              /* number of the current page (if any) */
+    protected $id;              /* current identification id for category, author, search (if any) */
 
-    public function __construct (int $case=1, mixed $id=NULL) {
-        $this->case = $case;
+    public function __construct ($page_type=1, $id=NULL) {
+        $this->page_type = $page_type;
+        $this->limit = isset($_SESSION['limit']) ? InputHandler::escape($_SESSION['limit']) : 5; /* alter limit feature yet not implemented */
         $this->pg = isset($_GET['pg']) ? InputHandler::escape($_GET['pg']) : 1;
         $this->id = isset($id) ? $id : NULL;
-        $this->total_posts = $this->get_total_posts_by_case();
+        $this->total_posts = $this->get_total_posts_by_page_type();
     }
 
     public function display_pager ($limit=5) {
         if ($limit) $this->limit = $limit;
         
-        if ($this->case == 1 && $this->total_posts == 0) {
-            exit;
+        if ($this->page_type == 1 && $this->total_posts == 0) {
+            return;
         } else if ($this->total_posts == 0) {
             $this->return_btn_html();
+            return;
         } else {
             $this->pager_html();
+            return;
         }
     }
 
@@ -49,78 +51,52 @@ class PagerDisplayer {
 
     private function previous_page () {
         $prev_pg = ($this->pg > 2) ? ($this->pg - 1) : 1;
-        echo "{$this->select_link()}/{$prev_pg}";
+        echo "{$this->page_link()}/{$prev_pg}";
     }
 
     private function next_page () { 
         $next_pg = ($this->pg >= $this->total_pages()) ? ($this->total_pages()) : ($this->pg + 1);
-        echo "{$this->select_link()}/{$next_pg}";
+        echo "{$this->page_link()}/{$next_pg}";
     }
 
     private function first_page () {
-        echo "<li> <a href='{$this->select_link()}/1'> << </a> </li>";
+        echo "<li> <a href='{$this->page_link()}/1'> << </a> </li>";
     }
 
     private function last_page () {
-        echo "<li> <a href='{$this->select_link()}/{$this->total_pages()}'> >> </a> </li>";
+        echo "<li> <a href='{$this->page_link()}/{$this->total_pages()}'> >> </a> </li>";
     }
 
     private function pages_number () {
         $pg = $this->pg;
         $total_pg = $this->total_pages(); 
-        $num_pgs = $this->num_pgs;
-        $magic_num = ($num_pgs - 1) / 2;
+        $max_num_pg = $this->max_num_pg;
+        $magic_num = ($max_num_pg - 1) / 2;
 
-        if ($pg <= ($num_pgs+1)/2) {
-            
-            if ($total_pg <= $num_pgs) {
-                for ($i=1; $i<=$total_pg; $i++) {
-                    $this->echo_page_number($i, $pg);
-                }
-            } else {
-                for ($i=1; $i<=9; $i++) {
-                    $this->echo_page_number($i, $pg);
-                }
-            }
-
+        if ($total_pg <= $max_num_pg) {
+            for ($i=1; $i<=$total_pg; $i++)
+                $this->echo_page_number($i);
         } else {
-
-            if ($pg-$magic_num < 1) {
-                for ($i=1; $i<=$pg; $i++) {
-                    $this->echo_page_number($i, $pg);
-                    $num_pgs -= 1;
-                }
-
-            } else if ($pg+$magic_num > $total_pg) {
-
-                $cols = $num_pgs - $total_pg - 1 + $pg;
-                for ($i=$pg-$cols; $i<=$pg; $i++) {
-                    $this->echo_page_number($i, $pg);
-                    $num_pgs -= 1;
-                }
-                
-            } else {
-
-                for ($i=$pg-$magic_num; $i<=$pg; $i++) {
-                    $this->echo_page_number($i, $pg);
-                    $num_pgs -= 1;
-                }
-            }
-        
-            for ($i=$pg+1; $i<=$pg+$num_pgs; $i++) {
-                $this->echo_page_number($i, $pg);
-            }
+            if ($pg <= $magic_num) 
+                for ($i=1; $i<=$max_num_pg; $i++) 
+                    $this->echo_page_number($i);
+            else if ($pg >= $total_pg - $magic_num + 1) 
+                for ($i=$total_pg-(2*$magic_num); $i<=$total_pg; $i++) 
+                    $this->echo_page_number($i);
+            else 
+                for ($i=$pg-$magic_num; $i<=$pg+$magic_num; $i++) 
+                    $this->echo_page_number($i);
         }
     }
 
-    private function echo_page_number ($i, $pg) {
-        echo ($i == $pg)
-            ? "<li> <a class='active_link' href='{$this->select_link()}/{$i}'>{$i}</a> </li>"
-            : "<li> <a href='{$this->select_link()}/{$i}'>{$i}</a> </li>";
+    private function echo_page_number ($i) {
+        echo ($i == $this->pg)
+            ? "<li> <a class='active_link' href='{$this->page_link()}/{$i}'>{$i}</a> </li>"
+            : "<li> <a href='{$this->page_link()}/{$i}'>{$i}</a> </li>";
     }
 
-    private function select_link () {
-        switch ($this->case) {
+    private function page_link () {
+        switch ($this->page_type) {
             case 1: return Config::REL_PATH."index";
             case 2: return Config::REL_PATH."search/{$this->id}";
             case 3: return Config::REL_PATH."author/{$this->id}";
@@ -128,10 +104,10 @@ class PagerDisplayer {
         }
     }
 
-    private function get_total_posts_by_case () {
-        switch ($this->case) {
-            case 1: return Post::count_posts_by_status(1);
-            case 2: return !empty($this->id) ? Post::posts_count_by_search_pattern($this->id) : 0;
+    private function get_total_posts_by_page_type () {
+        switch ($this->page_type) {
+            case 1: return Post::count_posts_by_published();
+            case 2: return !empty($this->id) ? Post::count_posts_by_search_pattern($this->id) : 0;
             case 3: return Post::count_posts_by_author($this->id);
             case 4: return Post::count_posts_by_category($this->id);;
         }
@@ -141,6 +117,5 @@ class PagerDisplayer {
         return ceil($this->total_posts / $this->limit);
     }
 }
-
 
 ?>

@@ -1,8 +1,7 @@
 {   
     "name": "jay/cms",
     "require": {
-        "phpmailer/phpmailer": "^6.5",
-        "pusher/pusher-php-server": "^7.0"
+        "phpmailer/phpmailer": "^6.5"
     },
     "autoload": {
         "classmap": [

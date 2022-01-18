@@ -1,7 +1,5 @@
-<?php include 'includes/phpmailer.php'; ?>
-
-<!-- Header Settings -->
 <?php include 'includes/header.php'; ?>
+<?php include 'functions/phpmailer_forgot_pswd.php'; ?>
 
 <!-- PHP page function set -->
 <?php include 'functions/f_forgot.php'; ?> 

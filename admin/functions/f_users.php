@@ -25,6 +25,9 @@ function catch_user_id_array () {
 }
 
 function user_action_switch ($option, $user_id) {
+    
+    if ($user_id == 1) return false; /* restriction: avoiding malicious user to alter master admin */
+    
     switch ($option) {
         case 'null': break;
         case '1': User::change_role(1, $user_id); break;
@@ -93,10 +96,16 @@ function update_role () {
     
     $stmt = NULL;
     if (isset($_GET['toadm'])) {
+        
+        if ($_GET['toadm'] == 1) return false; /* restriction: avoiding malicious user to alter master admin */
+        
         $user_id = $_GET['toadm'];
         $stmt = User::change_role(1, $user_id);
         if ($stmt) Notifications::set_toastr_session(Notifications::USER_ROLE_ADMIN);
     } else if (isset($_GET['tosub'])) {
+        
+        if ($_GET['tosub'] == 1) return false; /* restriction: avoiding malicious user to alter master admin */
+        
         $user_id = $_GET['tosub'];
         $stmt = User::change_role(2, $user_id);
         if ($stmt) Notifications::set_toastr_session(Notifications::USER_ROLE_SUBSCRIBER);

@@ -1,5 +1,3 @@
-
-<!-- Header -->
 <?php include 'includes/admin_header.php'; ?>
 
 <!-- Navigation -->
@@ -7,7 +5,6 @@
 
 <!-- Page Function Set -->
 <?php include 'functions/f_users.php'; ?>
-<?php include 'includes/modals/modal_delete_user.php'; ?>
 
 <!-- PHP functions -->
 <?php catch_user_id_array(); ?>
@@ -68,6 +65,11 @@
                             </form>
 
                         </div>
+                     
+                        <br>   
+                        <ol class="breadcrumb">
+                            <li> <i class="fa fa-dashboard"> </i>  <a href="index"> Dashboard </a> </li>   
+                        </ol>
 
                     </div>
                 </div>

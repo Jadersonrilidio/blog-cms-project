@@ -1,7 +1,6 @@
-<?php ob_start(); ?>
 <?php session_start(); ?>
+<?php ob_start(); ?>
 
-<!-- Load Composer's autoloader -->
 <?php require '../vendor/autoload.php'; ?>
 <?php include 'functions/admin_functions.php'; ?>
 
@@ -10,7 +9,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Head -->
 <head>
 
     <meta charset="utf-8">

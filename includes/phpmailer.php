@@ -13,7 +13,7 @@ require 'vendor/autoload.php';
 $mail = new PHPMailer(true);
 
 try {
-    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                   //Enable verbose debug output
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                   //Enable verbose debug output
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable implicit TLS encryption
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Host       = Config::SMPT_HOST;                      //Set the SMTP server to send through

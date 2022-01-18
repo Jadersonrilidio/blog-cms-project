@@ -1,5 +1,5 @@
-<?php ob_start()?>
 <?php session_start(); ?>
+<?php ob_start()?>
 
 <!-- Load Composer's autoloader -->
 <?php require 'vendor/autoload.php'; ?>

@@ -1,4 +1,3 @@
-
 <?php
 
 Permissions::redirect_not_logged('index');
@@ -31,11 +30,11 @@ function change_password () {
     $password = InputHandler::password_handler($_POST['new_password']);
     $id = $_SESSION['user_id'];
 
-    $stmt = User::update_password_by_id($password, $id);
+    $stmt = true; /* User::update_password_by_id($password, $id); */
     
     if ($stmt) {
         $user = User::get_last_inserted_user($id);
-        MySessionHandler::login_registered_user($user);
+        // MySessionHandler::login_registered_user($user);
         Notifications::set_toastr_session(Notifications::PASSWORD_RESET);
         Permissions::redirect('profile');
         return true;
@@ -63,10 +62,11 @@ function update_user () {
     $image = (!empty($_FILES['user_img']['name'])) ? ($_FILES['user_img']['name']) : NULL;
     $image_temp = (!empty($_FILES['user_img']['name'])) ? $_FILES['user_img']['tmp_name']: NULL;
 
-    $stmt = User::update_user($id, $username, $email, $language, $image);
+    $stmt = true; /* User::update_user($id, $username, $email, $language, $image); */
+    
     if ($stmt) {
-        move_uploaded_file($image_temp, Config::REL_PATH."images/{$image}");
-        MySessionHandler::session_login($id, $username, $_SESSION['user_role_id'], $email, $language, $image);
+        move_uploaded_file($image_temp, "images/{$image}");
+        // MySessionHandler::session_login($id, $username, $_SESSION['user_role_id'], $email, $language, $image);
         Notifications::set_toastr_session(Notifications::USER_UPDATED);
         Permissions::redirect('profile');
         return true;
