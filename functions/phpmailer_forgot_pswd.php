@@ -27,7 +27,7 @@ try {
 function send_email_by_phpmailer ($to, $subject, $body) {
     global $mail;
 
-    $mail->setFrom('message.bot@jadersonrodrigues.com');
+    $mail->setFrom('email@example.com');
     $mail->addAddress($to); 
     $mail->Subject = $subject;
     $mail->Body    = $body;
