@@ -26,8 +26,8 @@ try {
 function send_email_by_phpmailer ($to, $subject, $body) {
     global $mail;
 
-    $mail->setFrom('contato@jadersonrodrigues.com');
-    $mail->addAddress('contato@jadersonrodrigues.com');
+    $mail->setFrom('email@example.com');
+    $mail->addAddress('email@example.com');
     $mail->addReplyTo($to);
     $mail->Subject = $subject;
     //$mail->msgHTML(file_get_contents('message.html'), __DIR__);
@@ -36,7 +36,7 @@ function send_email_by_phpmailer ($to, $subject, $body) {
     if(!$mail->Send()) {
        echo "Mailer Error: " . $mail->ErrorInfo;
     } else {
-       echo "Mensagem enviada com sucesso";
+       echo "Mail sent successfully";
     }
 }
 
