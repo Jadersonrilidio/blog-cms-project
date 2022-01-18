@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2022 at 03:41 PM
+-- Generation Time: Jan 17, 2022 at 07:44 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `blog_cms`
+-- Database: `project_blog_cms`
 --
-CREATE DATABASE IF NOT EXISTS `blog_cms` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `blog_cms`;
+CREATE DATABASE IF NOT EXISTS `project_blog_cms` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `project_blog_cms`;
 
 -- --------------------------------------------------------
 
@@ -60,6 +60,14 @@ CREATE TABLE `comment_status` (
   `comment_status_title` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `comment_status`
+--
+
+INSERT INTO `comment_status` (`comment_status_id`, `comment_status_title`) VALUES
+(1, 'Approved'),
+(2, 'Unapproved');
+
 -- --------------------------------------------------------
 
 --
@@ -71,6 +79,16 @@ CREATE TABLE `languages` (
   `lang_abbrev` varchar(4) NOT NULL,
   `lang_name` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `languages`
+--
+
+INSERT INTO `languages` (`lang_id`, `lang_abbrev`, `lang_name`) VALUES
+(1, 'en', 'English'),
+(2, 'es', 'Español'),
+(3, 'pt', 'Português'),
+(4, 'ru', 'Русский');
 
 -- --------------------------------------------------------
 
@@ -102,6 +120,14 @@ CREATE TABLE `post_status` (
   `post_status_title` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `post_status`
+--
+
+INSERT INTO `post_status` (`post_status_id`, `post_status_title`) VALUES
+(1, 'Published'),
+(2, 'Draft');
+
 -- --------------------------------------------------------
 
 --
@@ -112,6 +138,14 @@ CREATE TABLE `roles` (
   `role_id` int(3) NOT NULL,
   `role_title` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`role_id`, `role_title`) VALUES
+(1, 'admin'),
+(2, 'subscriber');
 
 -- --------------------------------------------------------
 
@@ -220,13 +254,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `comment_status`
 --
 ALTER TABLE `comment_status`
-  MODIFY `comment_status_id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_status_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `languages`
 --
 ALTER TABLE `languages`
-  MODIFY `lang_id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `lang_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -238,13 +272,13 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `post_status`
 --
 ALTER TABLE `post_status`
-  MODIFY `post_status_id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `post_status_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `role_id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `role_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
