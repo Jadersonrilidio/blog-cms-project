@@ -13,10 +13,10 @@ try {
     $mail->SMTPDebug = 2;
     $mail->SMTPAuth   = true;
     $mail->SMTPSecure = 'ssl';
-    $mail->Host       = 'smtp.titan.email';
-    $mail->Username   = 'contato@jadersonrodrigues.com';
-    $mail->Password   = 'hyXhqCBF6e';
-    $mail->Port       = 465;
+    $mail->Host       = Config::SMPT_HOST;                      
+    $mail->Username   = Config::SMTP_USER;                     
+    $mail->Password   = Config::SMTP_PASSWORD;          
+    $mail->Port       = Config::SMPT_PORT;
     $mail->isHTML(true);
     $mail->CharSet = 'UTF-8';
 } catch (Exception $e) {
