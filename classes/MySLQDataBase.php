@@ -1,15 +1,10 @@
-
 <?php
 
-
-
-
-
 class MySQLDataBaseConnection {
-    private const HOST = 'Localhost';
-    private const USER = 'jaders34_main';
-    private const PSWD = 'main-db-operator2022';
-    private const DBNAME = 'jaders34_blog_cms';
+    private const HOST = 'localhost';
+    private const USER = 'root';
+    private const PSWD = '';
+    private const DBNAME = 'blog_cms';
 
     static protected function connection () {
         return mysqli_connect(Self::HOST, Self::USER, Self::PSWD, Self::DBNAME);
@@ -23,8 +18,6 @@ class MySQLDataBaseConnection {
         }
     }
 }
-
-
 
 
 
@@ -54,8 +47,6 @@ class QueryHandler extends MySQLDataBaseConnection {
 
 
 
-
-
 class InputHandler extends MySQLDataBaseConnection {
 
     static public function escape ($input) {
@@ -69,9 +60,5 @@ class InputHandler extends MySQLDataBaseConnection {
         return $password;
     }
 }
-
-
-
-
 
 ?>
